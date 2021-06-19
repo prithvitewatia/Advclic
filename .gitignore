@@ -1,0 +1,5 @@
+.vscode
+parser.tab.h
+parser.tab.c
+calculator.lex.c
+calculator
