@@ -47,10 +47,8 @@ double eval(ast* a){
     case '/':
         v = eval(a->l) / eval(a->r);
         break;
-    case '|':
-        v = eval(a->l);
-        if(v<0)
-            v=-v;
+    case '%':
+        v = (int)eval(a->l) % (int)eval(a->r);
         break;
     case 'M':
         v = -eval(a->l);
@@ -70,8 +68,8 @@ void treefree(ast* a){
     case '-':
     case '*':
     case '/':
+    case '%':
         treefree(a->r);
-    case '|':
     case 'M':
         treefree(a->l);
     case 'K':
