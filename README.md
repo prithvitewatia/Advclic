@@ -1,10 +1,15 @@
 ## Advclic
-
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 Advclic is a powerful command line calculator.  
 
 ### Installation
 
 Instructions to be added soon.  
+
+### Examples
+
+**Simple calculations**
+![Simple calculations](https://github.com/prithvitewatia/Advclic/blob/main/docs_imgs/Advclic_ex1.png)
 
 ### Feedback
 
