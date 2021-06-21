@@ -21,10 +21,10 @@ calclist: /* nothing */
         | calclist exp EOL          {   double result=eval($2); // Evaluate the ast
                                         printf("\033[0;32m%lf\n\033[0m",result);    //Print the result
                                         treefree($2);   //Free the memory
-                                        printCOLOUR("\033[0;34m","[Expr]");
+                                        printCOLOUR("blue","[Expr]");
                                     }
         | calclist EOL              {
-                                        printCOLOUR("\033[0;34m","[Expr]");
+                                        printCOLOUR("blue","[Expr]");
                                     }
         | calclist util EOL
         ;

@@ -29,6 +29,7 @@ ast* newnum(double d){
 
 double eval(ast* a){
     double v;   // Calculated value of this subtree
+    char buf[50];
     
     switch (a->nodetype)
     {
@@ -54,14 +55,14 @@ double eval(ast* a){
         v = -eval(a->l);
         break;
     default:
-        printf("\033[0;31m");    //Setting the output colour to red
-        printf("Internal error: bad node %c\n",a->nodetype);    //Displaying the error message
-        printf("\033[0m");  // Resetting the colour
+        sprintf(buf,"Internal error: bad node %c",a->nodetype);
+        printCOLOUR("red",buf);
     }
     return v;
 }
 
 void treefree(ast* a){
+    char buf[50];
     switch (a->nodetype)
     {
     case '+':
@@ -76,9 +77,8 @@ void treefree(ast* a){
         free(a);
         break;    
     default:
-        printf("\033[0;31m");    // Setting the output colour to red
-        printf("Internal error: bad node %c\n",a->nodetype);    // Displaying the error message
-        printf("\033[0m");  // Resetting the colour
+        sprintf(buf,"Internal error: bad node %c",a->nodetype);
+        printCOLOUR("red",buf);
     }
 }
 
@@ -94,16 +94,19 @@ void yyerror(char* s,...){
 
 void help(){
     char* help_msg="This is the help message\n";
-    printCOLOUR("\033[0;33m",help_msg);
-    printCOLOUR("\033[0;34m","[Expr]");
+    printCOLOUR("yellow",help_msg);
+    printCOLOUR("blue","[Expr]");
 }
 
 int main(){
+    const char* version="1.0.2";
     char* welcome_message="Welcome to the calculator utility.\n"
-                        "Type h for help or q for quit";
-    const char* version="1.0.1";
-    printf("\033[1;36mVersion=%s\n\033[0m",version);
-    printCOLOUR("\033[0;33m",welcome_message);  // Printing Welcome message in yellow
-    printCOLOUR("\033[0;34m","[Expr]"); //Displaying expression prompt in Blue
+                        "Type h for help or q for quit\n";
+    
+    char version_info[50];
+    sprintf(version_info,"Version=%s\n",version);
+    printCOLOUR("cyan",version_info);
+    printCOLOUR("yellow",welcome_message);  // Printing Welcome message in yellow
+    printCOLOUR("blue","[Expr]"); //Displaying expression prompt in Blue
     return yyparse();
 }
