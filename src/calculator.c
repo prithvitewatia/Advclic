@@ -101,17 +101,8 @@ void help(){
 int main(){
     char* welcome_message="Welcome to the calculator utility.\n"
                         "Type h for help or q for quit";
-
-    FILE* vp = fopen("VERSION","r");
-    if(!vp){
-        printf("\033[0;31mVersion info could not be found\n\033[0m");
-    }
-    else{
-        char version_info[10];
-        fscanf(vp,"%s[^\n]",version_info);
-        printf("\033[1;36mVesrion=%s\n\033[0m",version_info);
-    }
-    fclose(vp);
+    const char* version="1.0.1";
+    printf("\033[1;36mVersion=%s\n\033[0m",version);
     printCOLOUR("\033[0;33m",welcome_message);  // Printing Welcome message in yellow
     printCOLOUR("\033[0;34m","[Expr]"); //Displaying expression prompt in Blue
     return yyparse();
