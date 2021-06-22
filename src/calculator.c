@@ -120,7 +120,7 @@ void help(){
     "Subtraction: -\n"
     "Multiplication: *\n"
     "Division: /\n"
-    "Modulation: %% (warning operands are cast into integers)\n";
+    "Modulation: % (warning operands are cast into integers)\n";
 
     printCOLOUR("yellow",help_msg);
     printCOLOUR("blue","[Expr]");

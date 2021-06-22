@@ -15,7 +15,7 @@
 %token EOL
 
 // Assigns a value <a> to exp, factor and term
-%type <a> exp factor term util
+%type <a> exp factor term
 %%
 calclist: /* nothing */
         | calclist exp EOL          {   double result=eval($2); // Evaluate the ast
@@ -26,7 +26,16 @@ calclist: /* nothing */
         | calclist EOL              {
                                         printCOLOUR("blue","[Expr]");
                                     }
-        | calclist util EOL
+        | calclist 'h' EOL          {
+                                        help();
+                                    }          
+        | calclist 'q' EOL          {
+                                        exit(EXIT_SUCCESS);
+                                    }
+        | error EOL                 {
+                                        yyerrok;
+                                        printCOLOUR("blue","[Expr]");
+                                    }
         ;
 exp: factor
     | exp '+' factor                {
@@ -57,11 +66,4 @@ term: NUMBER                        {
                                         $$ = newast('M',$2,NULL);
                                     }
     ;
-util:   'h'                           {
-                                        help();
-                                    }
-    |   'q'                         {
-                                        exit(0);
-                                    }
-
 %%
