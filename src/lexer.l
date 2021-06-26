@@ -53,6 +53,14 @@ EXP         ([Ee][-+]?[0-9]+)
 "."?[0-9]+{EXP}?    {   yylval.d = atof(yytext);
                         return NUMBER;
                     }
+"pi"                {
+                        yylval.d = M_PI;
+                        return NUMBER;
+                    }
+"e"                 {
+                        yylval.d = exp(1);
+                        return NUMBER;
+                    }
 \n                  {
                         return EOL;
                     }
