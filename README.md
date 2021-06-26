@@ -9,7 +9,7 @@ Instructions to be added soon.
 ### Examples
 
 **Simple calculations**
-![Simple calculations](https://github.com/prithvitewatia/Advclic/blob/main/doc_imgs/Advclic_ex1.png)
+![Simple calculations](https://github.com/prithvitewatia/Advclic/blob/main/doc_imgs/Advclic_ex2.png)
 
 ### Feedback
 
