@@ -103,6 +103,9 @@ double eval(ast* a){
     case 'M':
         v = -eval(a->l);
         break;
+    case '^':
+        v = pow(eval(a->l),eval(a->r));
+        break;
     /* comparisons */
     case '1':
         v = eval(a->l) > eval(a->r) ? 1:0;
@@ -236,7 +239,7 @@ void treefree(ast* a){
     case '+': case '-': case '*': case '/': case '%':
     case '0': case '1': case '2': case '3': case '4': 
     case '5': case '6': case '|': case '&': case 'x':
-    case 'o': case 'a':
+    case 'o': case 'a': case '^':
         treefree(a->r);
     /* One subtree */
     case 'M':
@@ -274,7 +277,7 @@ void yyerror(char* s,...){
 
 void help(){
     char* help_msg="Calculator\n"
-    "Copyright (c) 2012-2021 Scott Chacon and others\n"
+    "Copyright (c) 2021 Prithvi\n"
     "Permission is hereby granted, free of charge, to any person obtaining "
     "a copy of this software and associated documentation files (the "
     "'Software'), to deal in the Software without restriction, including "
@@ -294,13 +297,35 @@ void help(){
     "OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION "
     "WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n\n"
     "AUTHOR:Prithvi\n"
-    "Full Documentation: link/to/documentation/to/be/added/soon\n"
     "Operators supported:\n"
-    "Addition: +\n"
-    "Subtraction: -\n"
-    "Multiplication: *\n"
-    "Division: /\n"
-    "Modulation: % (warning operands are cast into integers)\n";
+    "Addition: +,Subtraction: -,Multiplication: *,Division: /, Modulation %,Power ^\n"
+    "Logical Opeartors:\n"
+    "And: and , Or: or, Xor: xor,Not: not,Bitwise AND: &, Bitwise OR: |,Bitwise Not: ~\n"
+    "Functions:\n"
+    "exp(x): Returns e to the power x\n"
+    "exp2(x): Returns 2 to the power x\n"
+    "log(x): Returns logarithm of x to the base e\n"
+    "log2(x): Returns logarithm of x to the base 2\n"
+    "log10(x): Returns logarithm of x to the base 10\n"
+    "cos(x): Returns cosine of x\n"
+    "sin(x): Returns sine of x\n"
+    "tan(x): Returns tangent of x\n"
+    "acos(x): Returns arc of cos x or cos inverse x\n"
+    "asin(x): Returns arc of sin x or sin inverse x\n"
+    "atan(x): Returns arc of tan x or tan inverse x\n"
+    "sinh(x): Returns hyperbolic sine of x\n"
+    "cosh(x): Returns hyperbolic cosine of x\n"
+    "tanh(x): Returns hyperbolic tangent of x\n"
+    "asinh(x):Returns arc of hyperbolic sine of x\n"
+    "acosh(x):Returns arc of hyperbolic cosine of x\n"
+    "atanh(x):Returns arc of hyperbolic tangent of x\n"
+    "sqrt(x):Returns square root of x\n"
+    "cbrt(x): Returns cube root of x\n"
+    "abs(x): Returns absolute value of x\n"
+    "ceil(x): Returns ceil of x\n"
+    "floor(x): Retruns floor of x\n"
+    "erf(x): erf x is the probability that Y falls in the range [-x,x]\n"
+    "tgamma(x): The gamma function\n";
 
     printCOLOUR("yellow",help_msg);
     printCOLOUR("blue","[Expr]");

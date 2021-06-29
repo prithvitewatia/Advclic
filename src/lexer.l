@@ -11,7 +11,7 @@ EXP         ([Ee][-+]?[0-9]+)
 %%
 "h"                                 {   return yytext[0]; }
 "q"                                 {   return yytext[0]; }
-"+"|"-"|"*"|"/"|"%"|"("|")"|","     {   return yytext[0]; }
+"+"|"-"|"*"|"/"|"%"|"("|")"|"^"     {   return yytext[0]; }
 ">"                  {yylval.fn = 1; return GLCMP;}
 "<"                  {yylval.fn = 2; return GLCMP;}
 "!="                 {yylval.fn = 3; return ECMP;}

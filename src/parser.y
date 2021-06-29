@@ -32,6 +32,7 @@
 %left GLCMP
 %left '+' '-'
 %left '*' '/' '%'
+%left '^'
 %nonassoc NOT BITNOT UMINUS
 
 %%
@@ -69,6 +70,7 @@ exp:  NOT exp                       { $$ = newast('n',$2,NULL);}
     | exp '*' exp                   { $$ = newast('*',$1,$3);}
     | exp '/' exp                   { $$ = newast('/',$1,$3);}
     | exp '%' exp                   { $$ = newast('%',$1,$3);}
+    | exp '^' exp                   { $$ = newast('^', $1,$3);}
     | '(' exp ')'                   { $$ = $2;}
     | '-' exp %prec UMINUS          { $$ = newast('M',$2,NULL);}
     | NUMBER                        { $$ = newnum($1);}
