@@ -3,9 +3,17 @@
 Advclic is a powerful command line calculator.  
 
 ### Installation
+**Direct installation**
+The binaries have been released for windows x86-64 and ubuntu. The can be directly downloaded from the release section.
+**Building from source**
+1. Clone the repo into your computer.
+```
+git clone https://github.com/prithvitewatia/Advclic
+```
+2. Open up terminal and and cd into the repository
+3. Execute the make file by typing make.
 
-Instructions to be added soon.  
-
+Make sure to have flex,bison,gcc and make tool available and set on PATH on your system.  
 ### Examples
 
 **Simple calculations**
